@@ -7,6 +7,7 @@ E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\SysUserRoleExample.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\util\OverIsMergeablePlugin.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\controller\LoginController.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\mapper\SysRoleMapper.java
+E:\文件\eclipse\mall\src\main\java\com\hniu\service\impl\UserServiceImpl.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\util\ResourcesUtil.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\controller\ClearShiroCache.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\util\ImageUtil.java
@@ -14,6 +15,7 @@ E:\文件\eclipse\mall\src\main\java\com\hniu\mapper\SysRolePermissionMapper.jav
 E:\文件\eclipse\mall\src\main\java\com\hniu\shiro\CustomRealm.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\ActiveUser.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\SysPermission.java
+E:\文件\eclipse\mall\src\main\java\com\hniu\service\UserService.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\SysUserRole.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\SysRolePermission.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\exception\CustomExceptionResolver.java
@@ -33,4 +35,5 @@ E:\文件\eclipse\mall\src\main\java\com\hniu\mapper\SysPermissionMapperCustom.j
 E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\SysRoleExample.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\controller\FirstAction.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\exception\CustomException.java
+E:\文件\eclipse\mall\src\main\java\com\hniu\controller\UserController.java
 E:\文件\eclipse\mall\src\main\java\com\hniu\pojo\SysPermissionExample.java

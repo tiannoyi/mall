@@ -15,5 +15,4 @@
 
 	<!-- 认证和授权的service -->
 	<bean id="SysService" class="com.hniu.service.impl.SysServiceImpl"></bean>
-
 </beans>
