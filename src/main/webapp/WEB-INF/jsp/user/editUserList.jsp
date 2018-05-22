@@ -13,11 +13,24 @@ function editItemsAllSubmit(){
 	document.itemsForm.action="${pageContext.request.contextPath }/items/editItemsAllSubmit.action";
 	document.itemsForm.submit();
 }
-function queryItems(){
+ function queryUser(){
 	//提交form
-	document.itemsForm.action="${pageContext.request.contextPath }/items/queryItems.action";
+	document.itemsForm.action="${pageContext.request.contextPath }/user/selectUser";
 	document.itemsForm.submit();
-}
+} 
+/* function queryUser(){
+	var userName = $("#usercode").val();
+	$.post("${pageContext.request.contextPath }/user/loginTest",
+			{ usercode:usercode},
+			 function(data){
+			    if(data.isSuccess == true){
+			    	alert(data.message);
+			    	$(location).attr('href','user/loginView');
+			    }else{
+			    	alert(data.message);
+			    }
+			  },"json");		
+}  */
 </script>
 </head>
 <body> 
@@ -26,17 +39,19 @@ function queryItems(){
 <table width="100%" border=1>
 <tr>
 <td>
-用户账号：<input name="itemsCustom.name">
+用户账号：<input id="usercode" name="usercode" type="text">
+		<input type="button" value="查询" onclick="javascript:queryUser();"/>
 </td>
 <td>
-<input type="button" value="查询" onclick="javascript:queryItems();"/>
-<input type="button" value="批量修改提交" onclick="javascript:editItemsAllSubmit();">
+<input type="button" value="批量修改" onclick="javascript:editItemsAllSubmit();">
+<input type="button" value="批量删除" onclick="">
 </td>
 </tr>
 </table>
 用户列表：
 <table width="100%" border=1>
 <tr>
+	<td>*</td>
 	<td>用户账号</td>
 	<td>用户姓名</td>
 	<td>盐</td>
@@ -46,6 +61,7 @@ function queryItems(){
 <c:forEach items="${list}" var="item" varStatus="status">
 <tr>
 	<input type="hidden" name="list[${status.index}].id" value="${item.id }"/>
+	<td><input type="checkbox" name="items_id" value="${item.id }"/></td>
 	<td><input name="list[${status.index}].usercode" value="${item.usercode }"/></td>
 	<td><input name="list[${status.index}].username" value="${item.username }"/></td>
 	<td>${item.salt }</td>
@@ -53,6 +69,14 @@ function queryItems(){
 		<c:if test="${item.locked == 0}">否</c:if>
 		<c:if test="${item.locked == 1}">是</c:if>
 	</td>
+	<td>
+		<%-- <c:forEach items="${permission}" var="par">
+			<a href=javascript:addTab('${par.name }','${baseurl }/${par.url }')>${par.name }</a>
+		</c:forEach> --%>
+		<input type="button" value="修改" onclick=""/>
+		<input type="button" value="删除" onclick=""/>
+	</td>
+	
 </tr>
 </c:forEach>
 
@@ -60,5 +84,21 @@ function queryItems(){
 </table>
 </form>
 </body>
+<script type="text/javascript">
+function updateUser(){
+	var userName = $("#userName").val();
+	var passWord = $("#password").val();
+	$.post("${pageContext.request.contextPath }/user/loginTest",
+			{ userName:userName,password:passWord},
+			 function(data){
+			    if(data.isSuccess == true){
+			    	alert(data.message);
+			    	$(location).attr('href','user/loginView');
+			    }else{
+			    	alert(data.message);
+			    }
+			  },"json");		
+} 
+</script>
 
 </html>

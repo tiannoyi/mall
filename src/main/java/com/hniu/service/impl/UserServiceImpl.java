@@ -22,6 +22,13 @@ public class UserServiceImpl implements UserService{
 		example.setOrderByClause("id desc");
 		return userMapper.selectByExample(example);
 	}
+
+	@Override
+	public SysUser selectUser(String usercode) {
+		SysUserExample example = new SysUserExample();
+		example.createCriteria().andUsercodeEqualTo(usercode);
+		return userMapper.selectByExample(example).get(0);
+	}
 	
 
 }
