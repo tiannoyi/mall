@@ -21,10 +21,10 @@ public interface SysService {
 	public SysUser findSysUserByUserCode(String userCode)throws Exception;
 	
 	//根据用户id查询权限范围的菜单
-	public List<SysPermission> findMenuListByUserId(String userid)throws Exception;
+	public List<SysPermission> findMenuListByUserId(Integer userid)throws Exception;
 	
 	//根据用户id查询权限范围的url
-	public List<SysPermission> findPermissionListByUserId(String userid)throws Exception;
+	public List<SysPermission> findPermissionListByUserId(Integer userid)throws Exception;
 
 	
 }

@@ -52,7 +52,7 @@ public class SysServiceImpl implements SysService{
 			throw new CustomException("用户名或密码错误");
 		}
 		//得到用户id
-		String userid = sysUser.getId();
+		Integer userid = sysUser.getId();
 		
 		//根据用户id查询菜单
 		List<SysPermission> menuList = this.findMenuListByUserId(userid);
@@ -90,13 +90,13 @@ public class SysServiceImpl implements SysService{
 	}
 
 	@Override
-	public List<SysPermission> findMenuListByUserId(String userid) throws Exception {
+	public List<SysPermission> findMenuListByUserId(Integer userid) throws Exception {
 		
 		return sysPermissionMapperCustom.findMenuListByUserId(userid);
 	}
 
 	@Override
-	public List<SysPermission> findPermissionListByUserId(String userid) throws Exception {
+	public List<SysPermission> findPermissionListByUserId(Integer userid) throws Exception {
 		
 		return sysPermissionMapperCustom.findPermissionListByUserId(userid);
 	}

@@ -114,62 +114,52 @@ public class SysUserRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(String value) {
+        public Criteria andIdEqualTo(Integer value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(String value) {
+        public Criteria andIdNotEqualTo(Integer value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(String value) {
+        public Criteria andIdGreaterThan(Integer value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(String value) {
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(String value) {
+        public Criteria andIdLessThan(Integer value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(String value) {
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLike(String value) {
-            addCriterion("id like", value, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdNotLike(String value) {
-            addCriterion("id not like", value, "id");
-            return (Criteria) this;
-        }
-
-        public Criteria andIdIn(List<String> values) {
+        public Criteria andIdIn(List<Integer> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<String> values) {
+        public Criteria andIdNotIn(List<Integer> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(String value1, String value2) {
+        public Criteria andIdBetween(Integer value1, Integer value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(String value1, String value2) {
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -184,62 +174,52 @@ public class SysUserRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdEqualTo(String value) {
+        public Criteria andSysUserIdEqualTo(Integer value) {
             addCriterion("sys_user_id =", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotEqualTo(String value) {
+        public Criteria andSysUserIdNotEqualTo(Integer value) {
             addCriterion("sys_user_id <>", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdGreaterThan(String value) {
+        public Criteria andSysUserIdGreaterThan(Integer value) {
             addCriterion("sys_user_id >", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdGreaterThanOrEqualTo(String value) {
+        public Criteria andSysUserIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("sys_user_id >=", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLessThan(String value) {
+        public Criteria andSysUserIdLessThan(Integer value) {
             addCriterion("sys_user_id <", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLessThanOrEqualTo(String value) {
+        public Criteria andSysUserIdLessThanOrEqualTo(Integer value) {
             addCriterion("sys_user_id <=", value, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdLike(String value) {
-            addCriterion("sys_user_id like", value, "sysUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysUserIdNotLike(String value) {
-            addCriterion("sys_user_id not like", value, "sysUserId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysUserIdIn(List<String> values) {
+        public Criteria andSysUserIdIn(List<Integer> values) {
             addCriterion("sys_user_id in", values, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotIn(List<String> values) {
+        public Criteria andSysUserIdNotIn(List<Integer> values) {
             addCriterion("sys_user_id not in", values, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdBetween(String value1, String value2) {
+        public Criteria andSysUserIdBetween(Integer value1, Integer value2) {
             addCriterion("sys_user_id between", value1, value2, "sysUserId");
             return (Criteria) this;
         }
 
-        public Criteria andSysUserIdNotBetween(String value1, String value2) {
+        public Criteria andSysUserIdNotBetween(Integer value1, Integer value2) {
             addCriterion("sys_user_id not between", value1, value2, "sysUserId");
             return (Criteria) this;
         }
@@ -254,62 +234,52 @@ public class SysUserRoleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdEqualTo(String value) {
+        public Criteria andSysRoleIdEqualTo(Integer value) {
             addCriterion("sys_role_id =", value, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdNotEqualTo(String value) {
+        public Criteria andSysRoleIdNotEqualTo(Integer value) {
             addCriterion("sys_role_id <>", value, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdGreaterThan(String value) {
+        public Criteria andSysRoleIdGreaterThan(Integer value) {
             addCriterion("sys_role_id >", value, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdGreaterThanOrEqualTo(String value) {
+        public Criteria andSysRoleIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("sys_role_id >=", value, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdLessThan(String value) {
+        public Criteria andSysRoleIdLessThan(Integer value) {
             addCriterion("sys_role_id <", value, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdLessThanOrEqualTo(String value) {
+        public Criteria andSysRoleIdLessThanOrEqualTo(Integer value) {
             addCriterion("sys_role_id <=", value, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdLike(String value) {
-            addCriterion("sys_role_id like", value, "sysRoleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysRoleIdNotLike(String value) {
-            addCriterion("sys_role_id not like", value, "sysRoleId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSysRoleIdIn(List<String> values) {
+        public Criteria andSysRoleIdIn(List<Integer> values) {
             addCriterion("sys_role_id in", values, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdNotIn(List<String> values) {
+        public Criteria andSysRoleIdNotIn(List<Integer> values) {
             addCriterion("sys_role_id not in", values, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdBetween(String value1, String value2) {
+        public Criteria andSysRoleIdBetween(Integer value1, Integer value2) {
             addCriterion("sys_role_id between", value1, value2, "sysRoleId");
             return (Criteria) this;
         }
 
-        public Criteria andSysRoleIdNotBetween(String value1, String value2) {
+        public Criteria andSysRoleIdNotBetween(Integer value1, Integer value2) {
             addCriterion("sys_role_id not between", value1, value2, "sysRoleId");
             return (Criteria) this;
         }
