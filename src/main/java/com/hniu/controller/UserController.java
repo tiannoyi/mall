@@ -16,14 +16,13 @@ import com.hniu.service.UserService;
 import com.hniu.util.Page;
 
 @Controller
-@RequestMapping(value="")
+@RequestMapping(value="user")
 public class UserController {
 	@Autowired
 	UserService userService;
 	
 	//查询所有用户
 	@GetMapping(value="selectAll")
-	@ResponseBody
 	public String selectAll(Model model,Page page) {
 		PageHelper.offsetPage(page.getStart(), page.getCount());
 		List<SysUser> list = userService.selectAll();
@@ -31,7 +30,7 @@ public class UserController {
 		page.setTotal(total);
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
-		return null;
+		return "editUserList";
 	}
 	
 	// 获取指定id用户
