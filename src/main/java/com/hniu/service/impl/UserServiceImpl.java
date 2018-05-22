@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.hniu.mapper.SysUserMapper;
 import com.hniu.pojo.SysUser;
@@ -29,6 +30,33 @@ public class UserServiceImpl implements UserService{
 		example.createCriteria().andUsercodeEqualTo(usercode);
 		return userMapper.selectByExample(example).get(0);
 	}
+
+	@Override
+	public int updateUser(SysUser user) {
+	if(StringUtils.isEmpty(userMapper.selectByPrimaryKey(user.getId())) == true) {
+		return 2;
+	}
+		int i = userMapper.updateByPrimaryKeySelective(user);
+		if(i!=0) {
+			return 1;
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteUser(Integer id) {
+		if(StringUtils.isEmpty(userMapper.selectByPrimaryKey(id)) == true) {
+			return 2;
+		}
+		int i = userMapper.deleteByPrimaryKey(id);
+		if(i != 0) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	
+	
 	
 
 }

@@ -9,5 +9,8 @@ public interface UserService {
 	List<SysUser> selectAll();
 	//查询单个用户信息
 	SysUser selectUser(String usercode);
-
+	//修改单个用户信息
+	int updateUser(SysUser user);
+	//删除单个用户信息
+	int deleteUser(Integer id);
 }

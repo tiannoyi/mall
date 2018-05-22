@@ -1,6 +1,6 @@
 package com.hniu.util;
 
-public class Msg {
+public class State {
 	private Boolean isSuccess;
 	private String message;
 	private Object object;
@@ -8,12 +8,12 @@ public class Msg {
 	
 	
 	
-	public Msg() {};
-	public Msg(Boolean isSuccess,String message) {
+	public State() {};
+	public State(Boolean isSuccess,String message) {
 		this.isSuccess=isSuccess;
 		this.message=message;
 	}
-	public Msg(Boolean isSuccess, String message, Object object) {
+	public State(Boolean isSuccess, String message, Object object) {
 		this.isSuccess = isSuccess;
 		this.message = message;
 		this.object = object;

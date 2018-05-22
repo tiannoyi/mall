@@ -1,12 +1,18 @@
 package com.hniu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -16,6 +22,7 @@ import com.hniu.pojo.SysUser;
 import com.hniu.service.SysService;
 import com.hniu.service.UserService;
 import com.hniu.util.Page;
+import com.hniu.util.State;
 
 @Controller
 @RequestMapping(value="user")
@@ -47,8 +54,51 @@ public class UserController {
 	@GetMapping(value="selectUser")
 	public String selectUser(Model model,String usercode) {
 		SysUser user = userService.selectUser(usercode);
-		model.addAttribute("list",user);
+		List<SysUser> list = new ArrayList<>();
+		list.add(user);
+		model.addAttribute("list",list);
 		return "user/editUserList";
+	}
+	
+	//修改单个用户
+	@PutMapping(value="updateUser")
+	@ResponseBody
+	public State updateUser(SysUser user) {
+		State state = new State();
+		int i = userService.updateUser(user);
+		if(i==1) {
+			state.setIsSuccess(true);
+			state.setMessage("数据更新成功");
+			return state;
+		}else if(i == 2){
+			state.setIsSuccess(false);
+			state.setMessage("此用户不存在");
+			return state;
+		}else {
+			state.setIsSuccess(false);
+			state.setMessage("数据更新失败");
+			return state;
+		}
+	}
+	//删除单个用户
+	@DeleteMapping(value="deleteUser")
+	@ResponseBody
+	public State deleteUser(Integer id) {
+		State state = new State();
+		int i = userService.deleteUser(id);
+		if(i==1) {
+			state.setIsSuccess(true);
+			state.setMessage("用户删除成功成功");
+			return state;
+		}else if(i == 2){
+			state.setIsSuccess(false);
+			state.setMessage("此用户不存在");
+			return state;
+		}else {
+			state.setIsSuccess(false);
+			state.setMessage("用户删除失败");
+			return state;
+		}
 	}
 	
 }
