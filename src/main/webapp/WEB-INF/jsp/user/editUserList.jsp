@@ -16,6 +16,12 @@
 	document.userForm.method="get";
 	document.userForm.submit();
 } 
+ function updateUsers(){
+		//提交form
+		document.userForm.action="${pageContext.request.contextPath }/user/updateBatch";
+		document.userForm.method="post";
+		document.userForm.submit();
+	} 
  
 </script>
 </head>
@@ -29,7 +35,7 @@
 		<input type="button" value="查询" onclick="javascript:queryUser();"/>
 </td>
 <td>
-<input type="button" value="批量修改" onclick="">
+<input type="button" value="批量修改" onclick="updateUsers()">
 <input type="button" value="批量删除" onclick="">
 </td>
 </tr>
@@ -80,7 +86,8 @@ function updateUser(){
 			 function(data){
 			    if(data.isSuccess == true){
 			    	alert(data.message);
-			    	$(location).attr('href','/user/selectAll');
+			    	window.location.reload();
+			    	//$(location).attr('href','user/selectAll');
 			    }else{
 			    	alert(data.message);
 			    }
@@ -93,7 +100,8 @@ function deleteUser(){
 			 function(data){
 			    if(data.isSuccess == true){
 			    	alert(data.message);
-			    	$(location).attr('href','/user/selectAll');
+			    	window.location.reload();
+			    	//$(location).attr('href','user/selectAll');
 			    }else{
 			    	alert(data.message);
 			    }

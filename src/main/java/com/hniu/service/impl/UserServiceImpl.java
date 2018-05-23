@@ -54,6 +54,20 @@ public class UserServiceImpl implements UserService{
 		}
 		return 0;
 	}
+
+	@Override
+	public int updateBatch(List<Integer> id) {
+		int sum = id.size();
+		if(sum > 0) {
+			int i = userMapper.updateBatch(id);
+			if(i == sum) {
+				return 1;
+			}else {
+				return 0;
+			}
+		}
+		return 0;
+	}
 	
 	
 	

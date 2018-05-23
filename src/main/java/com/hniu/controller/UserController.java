@@ -61,7 +61,7 @@ public class UserController {
 	}
 	
 	//修改单个用户
-	@PutMapping(value="updateUser")
+	@RequestMapping(value="updateUser")
 	@ResponseBody
 	public State updateUser(SysUser user) {
 		State state = new State();
@@ -81,7 +81,7 @@ public class UserController {
 		}
 	}
 	//删除单个用户
-	@DeleteMapping(value="deleteUser")
+	@RequestMapping(value="deleteUser")
 	@ResponseBody
 	public State deleteUser(Integer id) {
 		State state = new State();
@@ -97,6 +97,24 @@ public class UserController {
 		}else {
 			state.setIsSuccess(false);
 			state.setMessage("用户删除失败");
+			return state;
+		}
+	}
+	
+	
+	//批量修改
+	@RequestMapping("updateBatch")
+	@ResponseBody
+	public State updateBatch(List<Integer> id) {
+		State state = new State();
+		int i = userService.updateBatch(id);
+		if(i==1) {
+			state.setIsSuccess(true);
+			state.setMessage("用户批量修改成功");
+			return state;
+		}else{
+			state.setIsSuccess(false);
+			state.setMessage("用户批量修改失败");
 			return state;
 		}
 	}

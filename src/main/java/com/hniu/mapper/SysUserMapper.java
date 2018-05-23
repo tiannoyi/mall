@@ -27,4 +27,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+    //批量修改
+    int updateBatch(List<Integer> id);
+    
 }

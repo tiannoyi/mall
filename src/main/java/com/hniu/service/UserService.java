@@ -13,4 +13,6 @@ public interface UserService {
 	int updateUser(SysUser user);
 	//删除单个用户信息
 	int deleteUser(Integer id);
+	//批量修改
+	int updateBatch(List<Integer> id);
 }
