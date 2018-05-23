@@ -16,13 +16,6 @@
 	document.userForm.method="get";
 	document.userForm.submit();
 } 
- function updateUsers(){
-		//提交form
-		document.userForm.action="${pageContext.request.contextPath }/user/updateBatch";
-		document.userForm.method="post";
-		document.userForm.submit();
-	} 
- 
 </script>
 </head>
 <body> 
@@ -35,8 +28,7 @@
 		<input type="button" value="查询" onclick="javascript:queryUser();"/>
 </td>
 <td>
-<input type="button" value="批量修改" onclick="updateUsers()">
-<input type="button" value="批量删除" onclick="">
+<input type="button" value="批量删除" onclick="deleteUsers()">
 </td>
 </tr>
 </table>
@@ -52,8 +44,8 @@
 </tr>
 <c:forEach items="${list}" var="item" varStatus="status">
 <tr>
-	<input type="hidden" name="list[${status.index}].id" value="${item.id }"/>
-	<td><input type="checkbox" id="userid" name="userid" value="${item.id }"/></td>
+	<%-- <input type="hidden" name="list[${status.index}].id" value="${item.id }"/> --%>
+	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
 	<td>${item.usercode }</td>
 	<td><input id="username" name="username" value="${item.username }"/></td>
 	<td>${item.salt }</td>
@@ -80,9 +72,9 @@
 <script type="text/javascript">
 function updateUser(){
 	var username = $("#username").val();
-	var userid = $("#userid").val();
+	var id = $("#id").val();
 	$.post("${pageContext.request.contextPath }/user/updateUser",
-			{ id:userid,username:username},
+			{ id:id,username:username},
 			 function(data){
 			    if(data.isSuccess == true){
 			    	alert(data.message);
@@ -94,9 +86,9 @@ function updateUser(){
 			  },"json");	
 }
 function deleteUser(){
-	var userid = $("#userid").val();
+	var id = $("#id").val();
 	$.post("${pageContext.request.contextPath }/user/deleteUser",
-			{ id:userid},
+			{ id:id},
 			 function(data){
 			    if(data.isSuccess == true){
 			    	alert(data.message);
@@ -106,6 +98,29 @@ function deleteUser(){
 			    	alert(data.message);
 			    }
 			  },"json");	
+}
+function deleteUsers() {
+	var checkBoxArray=[];
+	 $("input[name='id']:checked").each(function () { 
+         checkBoxArray.push(this.value) 
+     }); 
+  $.ajax({ 
+         type : 'post', 
+         url : '${pageContext.request.contextPath }/user/deleteBatch', 
+         traditional : true,//注意，必须要有个设置否则传递数组报400错误。默认为false深度序列化，在此改为true 
+         data : { 
+             id : checkBoxArray 
+         }, 
+         success : function(data) {
+        	 if(data.isSuccess == true){
+			    	alert(data.message);
+			    	window.location.reload();
+			    }else{
+			    	alert(data.message);
+			    }
+         }   
+     });  
+
 }
 </script>
 

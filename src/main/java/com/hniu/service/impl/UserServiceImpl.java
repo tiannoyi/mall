@@ -56,10 +56,10 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int updateBatch(List<Integer> id) {
-		int sum = id.size();
-		if(sum > 0) {
-			int i = userMapper.updateBatch(id);
+	public int deleteBatch(Integer[] id) {	
+		if(id!=null && id.length > 0) {
+			int sum = id.length;
+			int i = userMapper.deleteBatch(id);
 			if(i == sum) {
 				return 1;
 			}else {

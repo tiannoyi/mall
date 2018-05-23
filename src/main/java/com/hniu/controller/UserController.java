@@ -6,26 +6,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hniu.exception.CustomException;
 import com.hniu.pojo.SysPermission;
 import com.hniu.pojo.SysUser;
+import com.hniu.pojo.vo.SysUserVo;
 import com.hniu.service.SysService;
 import com.hniu.service.UserService;
 import com.hniu.util.Page;
 import com.hniu.util.State;
 
 @Controller
-@RequestMapping(value="user")
+@RequestMapping(value="/user")
 public class UserController {
 	@Autowired
 	UserService userService;
@@ -33,7 +32,7 @@ public class UserController {
 	SysService sysService;
 	
 	//查询所有用户
-	@GetMapping(value="selectAll")
+	@GetMapping(value="/selectAll")
 	public String selectAll(Model model,Page page,Integer id) throws Exception {
 		PageHelper.offsetPage(page.getStart(), page.getCount());
 		List<SysUser> list = userService.selectAll();
@@ -51,7 +50,7 @@ public class UserController {
 	}
 	
 	 //查询单个用户
-	@GetMapping(value="selectUser")
+	@GetMapping(value="/selectUser")
 	public String selectUser(Model model,String usercode) {
 		SysUser user = userService.selectUser(usercode);
 		List<SysUser> list = new ArrayList<>();
@@ -61,7 +60,7 @@ public class UserController {
 	}
 	
 	//修改单个用户
-	@RequestMapping(value="updateUser")
+	@RequestMapping(value="/updateUser")
 	@ResponseBody
 	public State updateUser(SysUser user) {
 		State state = new State();
@@ -81,7 +80,7 @@ public class UserController {
 		}
 	}
 	//删除单个用户
-	@RequestMapping(value="deleteUser")
+	@RequestMapping(value="/deleteUser")
 	@ResponseBody
 	public State deleteUser(Integer id) {
 		State state = new State();
@@ -100,23 +99,25 @@ public class UserController {
 			return state;
 		}
 	}
-	
-	
-	//批量修改
-	@RequestMapping("updateBatch")
+	//批量删除
+	@RequestMapping(value="/deleteBatch")
 	@ResponseBody
-	public State updateBatch(List<Integer> id) {
+	public State deleteBatch(@RequestParam("id") Integer[] id) {
 		State state = new State();
-		int i = userService.updateBatch(id);
-		if(i==1) {
+		int i = userService.deleteBatch(id);
+		if(i == 1) {
 			state.setIsSuccess(true);
-			state.setMessage("用户批量修改成功");
+			state.setMessage("用户批量删除成功");
 			return state;
-		}else{
+		}else {
 			state.setIsSuccess(false);
-			state.setMessage("用户批量修改失败");
+			state.setMessage("用户批量删除失败");
 			return state;
 		}
+		
 	}
+	
+	
+	
 	
 }
