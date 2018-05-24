@@ -46,17 +46,17 @@ public class UserController {
 		page.setTotal(total);
 		model.addAttribute("list",list);
 		model.addAttribute("page",page);
-		return "user/editUserList";
+		return "admin/editUserList";
 	}
 	
-	 //查询单个用户
+	 //查询单个用户,用户账号查询
 	@GetMapping(value="/selectUser")
 	public String selectUser(Model model,String usercode) {
 		SysUser user = userService.selectUser(usercode);
 		List<SysUser> list = new ArrayList<>();
 		list.add(user);
 		model.addAttribute("list",list);
-		return "user/editUserList";
+		return "admin/editUserList";
 	}
 	
 	//修改单个用户

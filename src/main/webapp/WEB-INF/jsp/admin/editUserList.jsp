@@ -6,6 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/styles/update.css"> 
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.0.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询用户列表</title>
 <script language="JavaScript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.js"></script>
@@ -24,11 +26,11 @@
 <table width="100%" border=1>
 <tr>
 <td>
-用户账号：<input id="usercode" name="usercode" type="text">
-		<input type="button" value="查询" onclick="javascript:queryUser();"/>
+用户账号：<input class="ipt" id="usercode" name="usercode" type="text">
+		<input class="btn btn-primary btn-large theme-login" type="button" value="查询" onclick="javascript:queryUser();"/>
 </td>
 <td>
-<input type="button" value="批量删除" onclick="deleteUsers()">
+<input class="btn btn-primary btn-large theme-login" type="button" value="批量删除" onclick="deleteUsers()">
 </td>
 </tr>
 </table>
@@ -44,10 +46,10 @@
 </tr>
 <c:forEach items="${list}" var="item" varStatus="status">
 <tr>
-	<%-- <input type="hidden" name="list[${status.index}].id" value="${item.id }"/> --%>
+	< <input type="hidden" name="userid${status.index}" value="${item.id }"/>
 	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
 	<td>${item.usercode }</td>
-	<td><input id="username" name="username" value="${item.username }"/></td>
+	<td><input id="username${status.index}" name="username" value="${item.username }"/></td>
 	<td>${item.salt }</td>
 	<td>
 		<c:if test="${item.locked == 0}">否</c:if>
@@ -57,9 +59,9 @@
 		<%-- <c:forEach items="${permission}" var="par">
 			<a href=javascript:addTab('${par.name }','${baseurl }/${par.url }')>${par.name }</a>
 		</c:forEach> --%>
-		<input type="button" value="修改" onclick="updateUser()"/>
-		<input type="button" value="删除" onclick="deleteUser()"/>
-		<input type="button" value="详细信息" onclick=""/>
+		<input class="btn btn-primary btn-large theme-login" type="button" value="修改" onclick="updateUser(${status.index})"/>
+		<input class="btn btn-primary btn-large theme-login" type="button" value="删除" onclick="deleteUser(${item.id})"/>
+		<input class="btn btn-primary btn-large theme-login" type="button" value="详细信息" onclick=""/>
 	</td>
 	
 </tr>
@@ -70,9 +72,9 @@
 </form>
 </body>
 <script type="text/javascript">
-function updateUser(){
-	var username = $("#username").val();
-	var id = $("#id").val();
+function updateUser(index){
+	 var username = $("#username"+index).val();
+	var id = $("#userid"+index).val();
 	$.post("${pageContext.request.contextPath }/user/updateUser",
 			{ id:id,username:username},
 			 function(data){
@@ -85,8 +87,10 @@ function updateUser(){
 			    }
 			  },"json");	
 }
-function deleteUser(){
-	var id = $("#id").val();
+function deleteUser(id){
+	//var id = $("#id").val();
+	var uid = id;
+	alert(uid);
 	$.post("${pageContext.request.contextPath }/user/deleteUser",
 			{ id:id},
 			 function(data){

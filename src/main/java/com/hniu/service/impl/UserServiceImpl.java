@@ -1,5 +1,6 @@
 package com.hniu.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,17 @@ public class UserServiceImpl implements UserService{
 	public SysUser selectUser(String usercode) {
 		SysUserExample example = new SysUserExample();
 		example.createCriteria().andUsercodeEqualTo(usercode);
-		return userMapper.selectByExample(example).get(0);
+		List<SysUser> users = new ArrayList<>();
+		users =userMapper.selectByExample(example);
+		if(users.isEmpty()) {
+			return null;
+		}
+		return users.get(0);
 	}
 
 	@Override
 	public int updateUser(SysUser user) {
-	if(StringUtils.isEmpty(userMapper.selectByPrimaryKey(user.getId())) == true) {
+	if(StringUtils.isEmpty(userMapper.selectByPrimaryKey(user.getId()))) {
 		return 2;
 	}
 		int i = userMapper.updateByPrimaryKeySelective(user);
@@ -45,7 +51,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int deleteUser(Integer id) {
-		if(StringUtils.isEmpty(userMapper.selectByPrimaryKey(id)) == true) {
+		if(StringUtils.isEmpty(userMapper.selectByPrimaryKey(id))) {
 			return 2;
 		}
 		int i = userMapper.deleteByPrimaryKey(id);
