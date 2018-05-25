@@ -27,4 +27,6 @@ public interface SysPermissionMapper {
     int updateByPrimaryKeySelective(SysPermission record);
 
     int updateByPrimaryKey(SysPermission record);
+    //批量删除角色
+    int deleteBatch(Integer[] id);
 }
