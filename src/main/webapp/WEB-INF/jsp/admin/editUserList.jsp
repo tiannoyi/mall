@@ -89,8 +89,6 @@ function updateUser(index){
 }
 function deleteUser(id){
 	//var id = $("#id").val();
-	var uid = id;
-	alert(uid);
 	$.post("${pageContext.request.contextPath }/user/deleteUser",
 			{ id:id},
 			 function(data){
