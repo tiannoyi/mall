@@ -125,11 +125,11 @@ public class RoleController {
 		int i = roleService.deleteBatch(id);
 		if(i == 1) {
 			state.setIsSuccess(true);
-			state.setMessage("用户批量删除成功");
+			state.setMessage("角色批量删除成功");
 			return state;
 		}else {
 			state.setIsSuccess(false);
-			state.setMessage("用户批量删除失败");
+			state.setMessage("角色批量删除失败");
 			return state;
 		}
 		
