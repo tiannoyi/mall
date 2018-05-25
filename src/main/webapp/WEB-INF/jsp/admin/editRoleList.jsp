@@ -77,6 +77,11 @@
 
 </table>
 </form>
+
+  <div class="pageDiv">
+        <%@include file="../include/admin/adminPage.jsp" %>
+    </div>
+
  <div class="theme-buy">
 <!-- <a class="btn btn-primary btn-large theme-login" href="javascript:;">点击查看效果</a> -->
 </div>

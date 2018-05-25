@@ -70,6 +70,10 @@
 
 </table>
 </form>
+
+  <div class="pageDiv">
+        <%@include file="../include/admin/adminPage.jsp" %>
+    </div>
 </body>
 <script type="text/javascript">
 function updateUser(index){
