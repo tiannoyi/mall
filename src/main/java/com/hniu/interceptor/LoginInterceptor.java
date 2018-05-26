@@ -1,91 +1,94 @@
-package com.hniu.interceptor;
 
+package com.hniu.interceptor;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.HandlerInterceptor;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.hniu.exception.CustomException;
-import com.hniu.pojo.ActiveUser;
-import com.hniu.util.ResourcesUtil;
+import com.hniu.pojo.Category;
+import com.hniu.pojo.OrderItem;
+import com.hniu.pojo.User;
+import com.hniu.service.CategoryService;
+import com.hniu.service.OrderItemService;
+ 
+public class LoginInterceptor extends HandlerInterceptorAdapter {
+    @Autowired
+    CategoryService categoryService;
+    @Autowired
+    OrderItemService orderItemService;
+     /**
+     * 在业务处理器处理请求之前被调用
+     * 如果返回false
+     *     从当前的拦截器往回执行所有拦截器的afterCompletion(),再退出拦截器链
+     * 如果返回true
+     *    执行下一个拦截器,直到所有的拦截器都执行完毕
+     *    再执行被拦截的Controller
+     *    然后进入拦截器链,
+     *    从最后一个拦截器往回执行所有的postHandle()
+     *    接着再从最后一个拦截器往回执行所有的afterCompletion()
+     */
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response, Object handler) throws Exception {
 
-/**
- * @author Acer
- *登陆认证拦截器
- */
-public class LoginInterceptor implements HandlerInterceptor{
+        HttpSession session = request.getSession();
+        String contextPath=session.getServletContext().getContextPath();
+        String[] noNeedAuthPage = new String[]{
+                "home",
+                "checkLogin",
+                "register",
+                "loginAjax",
+                "login",
+                "product",
+                "category",
+                "search"};
 
-	
-	//进入Handler方法之前执行
-	//用于生认证、身份授权
-	//比如身份认证，如果认证通过，表示当前用户没有登录，需要此方法拦截不在向下执行
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-	
-		//获取请求的url
-		String url = request.getRequestURI();
-		//判断url是否是公开地址（实际使用时将公开地址配置到配置文件中)
-		//这里公开地址就是登陆提交的地址
-		
-		//从配置文件中取出匿名访问url
-		
-		List<String> open_urls = ResourcesUtil.gekeyList("anonymousURL");
-		//遍历公开地址，如果是公开地址则放行
-			for(String open_url:open_urls) {
-				if(url.indexOf(open_url)>=0) {
-				//如果是公开地址则放行
-				return true;
-			}
-		}
-		
-		
-		
-		//判断session
-		HttpSession session = request.getSession();
-		//从session中取出用户身份信息
-		ActiveUser activeUser = (ActiveUser) session.getAttribute("activeUser");
-		
-		if(activeUser != null) {
-			//身份存在，放行
-			return true;
-		}
-		
-		//执行到这里表示用户身份需要认证，跳转到登陆页面
-		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-		
-		
-		//return false表示拦截，不向下执行
-		//return true表示放行
-		
-		
-		return false;
-	}
+        String uri = request.getRequestURI();
+        uri = StringUtils.remove(uri, contextPath);
+//        System.out.println(uri);
+        if(uri.startsWith("/fore")){
+            String method = StringUtils.substringAfterLast(uri,"/fore" );
+            if(!Arrays.asList(noNeedAuthPage).contains(method)){
+                User user =(User) session.getAttribute("user");
+                if(null==user){
+                    response.sendRedirect("loginPage");
+                    return false;
+                }
+            }
+        }
 
-	
-	//进入Handler方法之后，返回modelAndView之前执行
-	//应用场景从modelAndView出发：将公用的模型数据（比如菜单导航）在这里传到视图，也可以在这统一指定视图
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		
-		
-		System.out.println("HandlerInterceptor1.......postHandle");
-	}
+        return true;
 
-	
-	//执行Handler完成执行此方法
-	//应用场景：统一异常处理，统一日志处理
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		
-		System.out.println("HandlerInterceptor1.......afterCompletion");
-		
-	}
+    }
+ 
+    /**
+     * 在业务处理器处理请求执行完成后,生成视图之前执行的动作
+     * 可在modelAndView中加入数据，比如当前时间
+     */
 
-}
+    public void postHandle(HttpServletRequest request,
+            HttpServletResponse response, Object handler,    
+            ModelAndView modelAndView) throws Exception {
+
+
+    }
+ 
+    /**  
+     * 在DispatcherServlet完全处理完请求后被调用,可用于清理资源等   
+     *   
+     * 当有拦截器抛出异常时,会从当前拦截器往回执行所有的拦截器的afterCompletion()  
+     */
+     
+    public void afterCompletion(HttpServletRequest request,    
+            HttpServletResponse response, Object handler, Exception ex)  
+    throws Exception {  
+           
+    }  
+       
+} 

@@ -20,6 +20,7 @@
     <!-- 事务管理器
     	对mybatis操作数据库事务控制，spring 使用Jdbc的事务控制类
      -->
+      <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 数据源
         dataSource在applicationContext.xml中配置了

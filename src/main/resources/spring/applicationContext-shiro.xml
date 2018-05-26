@@ -37,7 +37,8 @@
 				/images/** = anon
 				/js/** = anon
 				/styles/** = anon
-				
+				/css/** = anon
+				/img/** = anon
 				<!-- 验证码课匿名访问 -->
 				/validatecode.jsp = anon
 				

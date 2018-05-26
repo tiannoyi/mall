@@ -117,5 +117,14 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	 -->
-	
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="com.hniu.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="com.hniu.interceptor.OtherInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

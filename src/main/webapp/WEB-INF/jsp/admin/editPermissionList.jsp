@@ -64,7 +64,7 @@
 </tr>
 <c:forEach items="${list}" var="item" varStatus="status">
 <tr>
- <input type="hidden" name="permissionid${status.index}" value="${item.id }"/>
+ <input type="hidden" id="permissionid${status.index}" name="permissionid${status.index}" value="${item.id }"/>
 	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
 	<td><input id="name${status.index}" name="name" value="${item.name }"/></td>
 	<td><input id="type${status.index}" name="type" value="${item.type }"/></td>
@@ -150,7 +150,7 @@ function insertPermission(){
 			  },"json");	
 }
 function updatePermission(index){
-	var id = $("#id"+index).val();
+	var id = $("#permissionid"+index).val();
 	var name = $("#name"+index).val();
 	var type = $("#type"+index).val();
 	var url = $("#url"+index).val();

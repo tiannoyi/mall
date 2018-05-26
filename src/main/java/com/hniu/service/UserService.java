@@ -1,18 +1,17 @@
-package com.hniu.service;
 
+package com.hniu.service;
+ 
 import java.util.List;
 
-import com.hniu.pojo.SysUser;
+import com.hniu.pojo.User;
 
 public interface UserService {
-	//查询所有用户信息
-	List<SysUser> selectAll();
-	//查询单个用户信息
-	SysUser selectUser(String usercode);
-	//修改单个用户信息
-	int updateUser(SysUser user);
-	//删除单个用户信息
-	int deleteUser(Integer id);
-	//批量删除
-	int deleteBatch(Integer[] id);
+    void add(User c);
+    void delete(int id);
+    void update(User c);
+    User get(int id);
+    List list();
+    boolean isExist(String name);
+
+    User get(String name, String password);
 }
