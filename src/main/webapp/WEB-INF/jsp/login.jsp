@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/tag.jsp"%>
 <html>
 <head>
-<TITLE>药品采购平台</TITLE>
+<TITLE>购物平台</TITLE>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hniu.mapper.SysRoleMapper" >
   <resultMap id="BaseResultMap" type="com.hniu.pojo.SysRole" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="available" property="available" jdbcType="CHAR" />
   </resultMap>
@@ -81,15 +81,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from sys_role
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sys_role
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hniu.pojo.SysRoleExample" >
     delete from sys_role
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.hniu.pojo.SysRole" >
     insert into sys_role (id, name, available
       )
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{available,jdbcType=CHAR}
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{available,jdbcType=CHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hniu.pojo.SysRole" >
@@ -118,7 +118,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -138,7 +138,7 @@
     update sys_role
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=VARCHAR},
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
@@ -153,7 +153,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update sys_role
-    set id = #{record.id,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       available = #{record.available,jdbcType=CHAR}
     <if test="_parameter != null" >
@@ -170,12 +170,21 @@
         available = #{available,jdbcType=CHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hniu.pojo.SysRole" >
     update sys_role
     set name = #{name,jdbcType=VARCHAR},
       available = #{available,jdbcType=CHAR}
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 批量删除角色 -->
+  <delete id="deleteBatch" parameterType="java.lang.Integer">
+  	delete from sys_role
+  	where id in
+  	<foreach collection="array" item="item" open="(" separator="," close=")">
+  		#{item}
+  	</foreach>
+  	
+  </delete>
 </mapper>

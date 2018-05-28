@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hniu.mapper.SysUserMapper" >
   <resultMap id="BaseResultMap" type="com.hniu.pojo.SysUser" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="usercode" property="usercode" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -84,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from sys_user
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sys_user
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.hniu.pojo.SysUserExample" >
     delete from sys_user
@@ -104,7 +104,7 @@
     insert into sys_user (id, usercode, username, 
       password, salt, locked
       )
-    values (#{id,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{locked,jdbcType=CHAR}
       )
   </insert>
@@ -132,7 +132,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="usercode != null" >
         #{usercode,jdbcType=VARCHAR},
@@ -161,7 +161,7 @@
     update sys_user
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=VARCHAR},
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.usercode != null" >
         usercode = #{record.usercode,jdbcType=VARCHAR},
@@ -185,7 +185,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update sys_user
-    set id = #{record.id,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=INTEGER},
       usercode = #{record.usercode,jdbcType=VARCHAR},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -214,7 +214,7 @@
         locked = #{locked,jdbcType=CHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hniu.pojo.SysUser" >
     update sys_user
@@ -223,6 +223,18 @@
       password = #{password,jdbcType=VARCHAR},
       salt = #{salt,jdbcType=VARCHAR},
       locked = #{locked,jdbcType=CHAR}
-    where id = #{id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 批量修改 -->
+  <update id="updateBatch" parameterType="java.util.List">
+  	<foreach collection="list" item="item" index="index" separator=";">
+  		update sys_user
+  		<set>
+  			<if test="item.username != null">
+  				username = #{item.username,jdbcType=VARCHAR},
+  			</if>
+  		</set>
+  		where id = #{item.id,jdbcType=INTEGER}
+  	</foreach>
   </update>
 </mapper>

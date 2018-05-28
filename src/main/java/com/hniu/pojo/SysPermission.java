@@ -1,7 +1,7 @@
 package com.hniu.pojo;
 
-public class SysPermission implements java.io.Serializable{
-    private Long id;
+public class SysPermission {
+    private Integer id;
 
     private String name;
 
@@ -19,11 +19,11 @@ public class SysPermission implements java.io.Serializable{
 
     private String available;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

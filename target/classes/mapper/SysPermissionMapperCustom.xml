@@ -3,7 +3,7 @@
 <mapper namespace="com.hniu.mapper.SysPermissionMapperCustom" >
   
   	<!-- 根据用户id查询url -->
-  	<select id="findPermissionListByUserId" parameterType="String" resultType="com.hniu.pojo.SysPermission">
+  	<select id="findPermissionListByUserId" parameterType="Integer" resultType="com.hniu.pojo.SysPermission">
   		SELECT *
 		FROM sys_permission
 		WHERE type = 'permission'
@@ -20,7 +20,7 @@
   
   
     <!-- 根据用户id查询菜单 -->
-  	<select id="findMenuListByUserId" parameterType="String" resultType="com.hniu.pojo.SysPermission">
+  	<select id="findMenuListByUserId" parameterType="Integer" resultType="com.hniu.pojo.SysPermission">
   		SELECT *
 		FROM sys_permission
 		WHERE type = 'menu'

@@ -10,7 +10,7 @@ public interface SysUserMapper {
 
     int deleteByExample(SysUserExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(SysUser record);
 
@@ -18,7 +18,7 @@ public interface SysUserMapper {
 
     List<SysUser> selectByExample(SysUserExample example);
 
-    SysUser selectByPrimaryKey(String id);
+    SysUser selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") SysUser record, @Param("example") SysUserExample example);
 
@@ -27,4 +27,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+    //批量删除
+    int deleteBatch(Integer[] id);
+    
 }

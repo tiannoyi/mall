@@ -12,7 +12,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
  * 
  */
 public class ActiveUser implements java.io.Serializable {
-	private String userid;//用户id
+	private Integer userid;//用户id
 	private String usercode;// 用户账号
 	private String username;// 用户名称
 
@@ -36,11 +36,11 @@ public class ActiveUser implements java.io.Serializable {
 		this.usercode = usercode;
 	}
 
-	public String getUserid() {
+	public Integer getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(Integer userid) {
 		this.userid = userid;
 	}
 

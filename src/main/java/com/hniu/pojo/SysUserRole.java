@@ -1,33 +1,33 @@
 package com.hniu.pojo;
 
 public class SysUserRole {
-    private String id;
+    private Integer id;
 
-    private String sysUserId;
+    private Integer sysUserId;
 
-    private String sysRoleId;
+    private Integer sysRoleId;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getSysUserId() {
+    public Integer getSysUserId() {
         return sysUserId;
     }
 
-    public void setSysUserId(String sysUserId) {
-        this.sysUserId = sysUserId == null ? null : sysUserId.trim();
+    public void setSysUserId(Integer sysUserId) {
+        this.sysUserId = sysUserId;
     }
 
-    public String getSysRoleId() {
+    public Integer getSysRoleId() {
         return sysRoleId;
     }
 
-    public void setSysRoleId(String sysRoleId) {
-        this.sysRoleId = sysRoleId == null ? null : sysRoleId.trim();
+    public void setSysRoleId(Integer sysRoleId) {
+        this.sysRoleId = sysRoleId;
     }
 }

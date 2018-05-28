@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/jsp/tag.jsp"%>
 <html>
 <head>
-<title>药品采购平台</title>
+<title>购物平台</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 
@@ -96,7 +96,7 @@
 
 		</SPAN> <SPAN style="padding-left: 10px; font-size: 16px;"><IMG
 			align="absmiddle" src="images/blocks.gif" width="20" height="20">
-			***********系统</SPAN> <SPAN style="padding-left: 15px;" id="News"></SPAN>
+			购物系统</SPAN> <SPAN style="padding-left: 15px;" id="News"></SPAN>
 	</DIV>
 
 	<DIV style="background: rgb(210, 224, 242); height: 30px;" split="false"
@@ -118,7 +118,7 @@
 					<li><div>
 						<a title="${menu.name }" ref="1_1" href="#"
 							rel="${baseurl }/${menu.url }" icon="icon-log"><span
-							class="icon icon-log">&nbsp;</span><span class="nav"><a href=javascript:addTab('${menu.name }','${baseurl }/${menu.url }')>${menu.name }</a></span></a>
+							class="icon icon-log">&nbsp;</span><span class="nav"><a href=javascript:addTab('${menu.name }','${baseurl }/${menu.url }?id=${activeUser.userid}')>${menu.name }</a></span></a>
 					</div></li>
 				</c:forEach>
 				</ul>
@@ -152,7 +152,7 @@
 		id="mainPanle" region="center">
 		<DIV id="tabs" class="easyui-tabs" border="false" fit="true"></DIV>
 	</DIV>
-
+	
 
 </BODY>
 </HTML>
