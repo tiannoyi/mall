@@ -1,3 +1,3 @@
 <%
-response.sendRedirect("first.action");
+response.sendRedirect("first");
 %>
