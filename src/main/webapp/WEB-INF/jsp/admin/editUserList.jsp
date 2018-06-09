@@ -46,7 +46,7 @@
 </tr>
 <c:forEach items="${list}" var="item" varStatus="status">
 <tr>
-	< <input type="hidden" name="userid${status.index}" value="${item.id }"/>
+	 <input type="hidden" name="userid${status.index}" id="userid${status.index}" value="${item.id }"/>
 	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
 	<td>${item.usercode }</td>
 	<td><input id="username${status.index}" name="username" value="${item.username }"/></td>
@@ -72,7 +72,7 @@
 </form>
 
   <div class="pageDiv">
-        <%@include file="../include/admin/adminPage.jsp" %>
+         <%@include file="../include/admin/adminPage.jsp" %> 
     </div>
 </body>
 <script type="text/javascript">
