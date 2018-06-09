@@ -1,9 +1,0 @@
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:00 +0800] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:03 +0800] "GET /mall HTTP/1.1" 302 - http-bio-8080-exec-7 0
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /mall/ HTTP/1.1" 200 3179 http-bio-8080-exec-8 652
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /mall/public/js/cloud.js HTTP/1.1" 404 997 http-bio-8080-exec-3 8
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /mall/public/css/style.css HTTP/1.1" 404 1001 http-bio-8080-exec-9 13
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /mall/public/js/jquery.js HTTP/1.1" 404 999 http-bio-8080-exec-2 13
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /mall/public/js/cloud.js HTTP/1.1" 404 997 http-bio-8080-exec-2 2
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /mall/public/images/light.png HTTP/1.1" 404 1007 http-bio-8080-exec-2 2
-0:0:0:0:0:0:0:1 - - [18/May/2018:20:53:04 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-2 0
