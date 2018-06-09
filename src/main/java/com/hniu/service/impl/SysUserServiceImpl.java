@@ -3,6 +3,7 @@ package com.hniu.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -73,6 +74,30 @@ public class SysUserServiceImpl implements SysUserService{
 			}
 		}
 		return 0;
+	}
+
+	@Override
+	public int updatePassword(Integer id, String oldPassword, String newPassword, String secendPassword) {
+		SysUser user = userMapper.selectByPrimaryKey(id);
+		String password = user.getPassword();
+		String salt = user.getSalt();
+		int hashIterations = 1;
+		
+		Md5Hash md5Hash = new Md5Hash(oldPassword,salt,hashIterations);
+		String password_md5 = md5Hash.toString();
+		if(!password.equals(password_md5)) {
+			return 2;
+		}else if(!newPassword.equals(secendPassword)) {
+			return 3;
+		}
+		Md5Hash md5Hash1 = new Md5Hash(newPassword,salt,hashIterations);
+		String newPwd = md5Hash1.toString();
+		user.setPassword(newPwd);
+		int i = userMapper.updateByPrimaryKeySelective(user);
+		if(i != 0) {
+			return 0;
+		}
+		return 4;
 	}
 	
 	
