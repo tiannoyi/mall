@@ -31,6 +31,21 @@ public class SysUserController {
 	@Autowired
 	SysService sysService;
 	
+	
+	//修改密码跳转页面
+	@RequestMapping(value="/selectMyself")
+	public String selectMyself() {
+		
+		return "admin/updatePassword";
+	}
+	
+	//修改密码
+	@RequestMapping(value= "/updatePassword")
+	public State updatePassword(SysUser user) {
+		
+		return null;
+	}
+	
 	//查询所有用户
 	@GetMapping(value="/selectAll")
 	public String selectAll(Model model,Page page,Integer id) throws Exception {
@@ -51,10 +66,11 @@ public class SysUserController {
 	
 	 //查询单个用户,用户账号查询
 	@GetMapping(value="/selectUser")
-	public String selectUser(Model model,String usercode) {
+	public String selectUser(Model model,String usercode,Page page) {
 		SysUser user = userService.selectUser(usercode);
 		List<SysUser> list = new ArrayList<>();
 		list.add(user);
+		model.addAttribute("page",page);
 		model.addAttribute("list",list);
 		return "admin/editUserList";
 	}
