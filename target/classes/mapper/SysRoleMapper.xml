@@ -178,4 +178,13 @@
       available = #{available,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!-- 批量删除角色 -->
+  <delete id="deleteBatch" parameterType="java.lang.Integer">
+  	delete from sys_role
+  	where id in
+  	<foreach collection="array" item="item" open="(" separator="," close=")">
+  		#{item}
+  	</foreach>
+  	
+  </delete>
 </mapper>

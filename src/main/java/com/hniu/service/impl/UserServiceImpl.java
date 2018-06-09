@@ -64,5 +64,16 @@ public class UserServiceImpl implements UserService {
         return result.get(0);
     }
 
+	@Override
+	public boolean updateUserByName(User u,String oldpassword) {
+		User user=userMapper.selectByName(u.getName());
+		if(user.getPassword().equals(oldpassword)) {
+			userMapper.updateByName(u);
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 
 }

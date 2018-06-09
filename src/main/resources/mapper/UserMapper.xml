@@ -104,4 +104,16 @@
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--修改密码  -->
+  <update id="updateByName" parameterType="com.hniu.pojo.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR}
+    where name = #{name,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByName" parameterType="String" resultType="com.hniu.pojo.User">
+    select *
+    from user
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
 </mapper>
