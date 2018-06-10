@@ -34,7 +34,7 @@
 <body> 
 <form name="userForm" action="${pageContext.request.contextPath }/items/queryItems.action" method="post">
 <div class="panel panel-warning addDiv">
-<div class="panel-heading">查询条件：角色名</div>
+<div class="panel-heading">查询条件：权限名</div>
 	<table class="editTable">
 		<tr>
 		<td>
