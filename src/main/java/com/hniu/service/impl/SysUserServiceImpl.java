@@ -92,6 +92,9 @@ public class SysUserServiceImpl implements SysUserService{
 		}
 		Md5Hash md5Hash1 = new Md5Hash(newPassword,salt,hashIterations);
 		String newPwd = md5Hash1.toString();
+		if(newPwd.equals(password)) {
+			return 5;
+		}
 		user.setPassword(newPwd);
 		int i = userMapper.updateByPrimaryKeySelective(user);
 		if(i != 0) {

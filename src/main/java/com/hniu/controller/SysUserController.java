@@ -145,6 +145,10 @@ public class SysUserController {
 			state.setIsSuccess(true);
 			state.setMessage("密码修改成功");
 			return state;
+		}else if(i == 5) {
+			state.setIsSuccess(false);
+			state.setMessage("新密码与旧密码一致");
+			return state;
 		}else {
 			state.setIsSuccess(false);
 			state.setMessage("密码修改失败");
