@@ -8,6 +8,9 @@
 <head>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/styles/update.css"> 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.0.min.js"></script>
+<script src="${pageContext.request.contextPath }/js/jquery/2.0.0/jquery.min.js"></script>
+<link href="${pageContext.request.contextPath }/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/js/bootstrap/3.3.6/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询用户列表</title>
 <script language="JavaScript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.js"></script>
@@ -22,21 +25,28 @@
 </head>
 <body> 
 <form name="userForm" action="${pageContext.request.contextPath }/items/queryItems.action" method="post">
-查询条件：
-<table width="100%" border=1>
-<tr>
-<td>
-用户账号：<input class="ipt" id="usercode" name="usercode" type="text">
-		<input class="btn btn-primary btn-large theme-login" type="button" value="查询" onclick="javascript:queryUser();"/>
-</td>
-<td>
-<input class="btn btn-primary btn-large theme-login" type="button" value="批量删除" onclick="deleteUsers()">
-</td>
-</tr>
-</table>
-用户列表：
-<table width="100%" border=1>
-<tr>
+	<div class="panel panel-warning addDiv">
+	<div class="panel-heading">查询条件：用户账号</div>
+		<table class="editTable" >
+		<tr>
+			<td>
+				<input class="form-control" id="usercode" name="usercode" type="text">		
+			</td>
+			<td>
+				<button class="btn btn-primary" type="button" onclick="javascript:queryUser();">查询</button>
+			</td>
+			<td>
+				<button class="btn btn-danger" type="button" onclick="deleteUsers()">批量删除</button>
+			</td>
+		</tr>
+		</table>
+	</div>
+<div class="listDataTableDiv">
+<h1 class="label label-info" >用户列表：</h1>
+<br>
+<br>
+<table class="table table-striped table-bordered table-hover  table-condensed">
+<tr class="success">
 	<td>*</td>
 	<td>用户账号</td>
 	<td>用户姓名</td>
@@ -49,7 +59,7 @@
 	 <input type="hidden" name="userid${status.index}" id="userid${status.index}" value="${item.id }"/>
 	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
 	<td>${item.usercode }</td>
-	<td><input id="username${status.index}" name="username" value="${item.username }"/></td>
+	<td><input class="form-control" id="username${status.index}" name="username" value="${item.username }"/></td>
 	<td>${item.salt }</td>
 	<td>
 		<c:if test="${item.locked == 0}">否</c:if>
@@ -59,9 +69,9 @@
 		<%-- <c:forEach items="${permission}" var="par">
 			<a href=javascript:addTab('${par.name }','${baseurl }/${par.url }')>${par.name }</a>
 		</c:forEach> --%>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="修改" onclick="updateUser(${status.index})"/>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="删除" onclick="deleteUser(${item.id})"/>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="详细信息" onclick=""/>
+		<button class="btn btn-success" type="button" onclick="updateUser(${status.index})">修改 </button>
+		<button class="btn btn-warning" type="button" onclick="deleteUser(${item.id})">删除</button>
+		<button class="btn btn-info" type="button" onclick="">详细信息</button>
 	</td>
 	
 </tr>
@@ -69,6 +79,7 @@
 
 
 </table>
+</div>
 </form>
 
   <div class="pageDiv">
