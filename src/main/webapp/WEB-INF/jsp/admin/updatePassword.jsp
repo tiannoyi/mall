@@ -11,7 +11,7 @@
 <title>修改密码界面</title>
 <style type="text/css">
 	.div1{
-		margin-left: 150px;
+		margin-left: 80px;
 		margin-top: 50px;
 	}
 </style>
@@ -42,7 +42,7 @@ function pudatePassword() {
 <body>
 	<div class="div1">
 	<input type="hidden" id="userid" name="userid" value="${userid}">
-	<h1>修改密码</h1>
+	<h1 class="label label-info" >修改密码</h1><br><br><br>
 	<table class="editTable">
 	<tr>
 		<td>
