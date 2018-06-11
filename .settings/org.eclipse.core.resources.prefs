@@ -5,5 +5,7 @@ encoding//src/main/resources/CustomValidationMessages.properties=UTF-8
 encoding//src/main/resources/anonymousURL.properties=UTF-8
 encoding//src/main/resources/commonURL.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/admin/helpPage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/admin/updatePassword.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8

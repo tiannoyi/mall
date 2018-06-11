@@ -33,22 +33,34 @@
 </head>
 <body> 
 <form name="userForm" action="${pageContext.request.contextPath }/items/queryItems.action" method="post">
-查询条件：
-<table width="100%" border=1>
-<tr>
-<td>
-角色名：<input class="ipt" id="RoleName" name="RoleName" type="text">
-	<input class="btn btn-primary btn-large theme-login" type="button" value="查询" onclick="javascript:queryRole();"/>
-</td>
-<td>
-<a class="btn btn-primary btn-large theme-login" href="javascript:;">添加角色</a>
-<input class="btn btn-primary btn-large theme-login" type="button" value="批量删除"  onclick="deleteUsers()"/>
-</td>
-</tr>
-</table>
-角色列表：
-<table width="100%" border=1>
-<tr>
+<div class="panel panel-warning addDiv">
+<div class="panel-heading">查询条件：权限名</div>
+	<table class="editTable">
+		<tr>
+		<td>
+			<input class="form-control" id="RoleName" name="RoleName" type="text">
+		</td>
+		<td>
+			<input class="btn btn-primary" type="button" value="查询" onclick="javascript:queryRole();"/>
+		</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<a class="btn btn-primary btn-large theme-login" href="javascript:;">添加角色</a>
+				<input class="btn btn-danger" type="button" value="批量删除"  onclick="deleteUsers()"/>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="listDataTableDiv">
+<h1 class="label label-info" >角色列表：</h1>
+<br>
+<br>
+<table class="table table-striped table-bordered table-hover  table-condensed">
+<tr class="success">
 	<td>*</td>
 	<td>权限名</td>
 	<td>是否可用</td>
@@ -58,7 +70,7 @@
 <tr>
 	<input type="hidden" id="roleid${status.index}" name="role_id" value="${item.id }"/>
 	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
-	<td><input id="name${status.index}" name="name" value="${item.name }"/></td>
+	<td><input class="form-control" id="name${status.index}" name="name" value="${item.name }"/></td>
 	<td>
 		<c:if test="${item.available == 0}">否</c:if>
 		<c:if test="${item.available == 1}">是</c:if>
@@ -67,15 +79,16 @@
 		<%-- <c:forEach items="${permission}" var="par">
 			<a href=javascript:addTab('${par.name }','${baseurl }/${par.url }')>${par.name }</a>
 		</c:forEach> --%>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="修改" onclick="updateRole(${status.index})"/>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="删除" onclick="deleteRole(${item.id})"/>
+		<button class="btn btn-success" type="button" onclick="updateRole(${status.index})">修改</button>
+		<button class="btn btn-warning" type="button" onclick="deleteRole(${item.id})">删除</button>
 	</td>
 	
 </tr>
 </c:forEach>
-
-
 </table>
+
+</div>
+
 </form>
 
   <div class="pageDiv">

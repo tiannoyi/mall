@@ -49,11 +49,12 @@ public class RoleController {
 	}
 	//查询单个角色
 	@GetMapping("selectRole")
-	public String selectRole(Model model,String RoleName) {
+	public String selectRole(Model model,String RoleName,Page page) {
 		SysRole role = roleService.selectRole(RoleName);
 		List<SysRole> list = new ArrayList<>();
 		list.add(role);
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
 		return "admin/editRoleList";
 	}
 	//添加角色

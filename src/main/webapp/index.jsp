@@ -1,3 +1,4 @@
 <%
-response.sendRedirect("first.action");
+response.sendRedirect("forehome");
+//response.sendRedirect("first");
 %>

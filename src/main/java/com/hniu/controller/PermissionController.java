@@ -47,11 +47,12 @@ public class PermissionController {
 	
 	//查询单个权限
 	@GetMapping("selectPermission")
-	public String selectPermission(Model model,String permissionName) {
+	public String selectPermission(Model model,String permissionName,Page page) {
 		SysPermission permission = permissionService.selectPermission(permissionName);
 		List<SysPermission> list = new ArrayList<>();
 		list.add(permission);
 		model.addAttribute("list",list);
+		model.addAttribute("page",page);
 		return "admin/editPermissionList";
 	}
 	

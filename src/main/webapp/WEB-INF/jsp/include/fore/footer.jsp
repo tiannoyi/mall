@@ -1,6 +1,3 @@
-<!-- 模仿天猫整站ssm 教程 为how2j.cn 版权所有-->
-<!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
-<!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8" isELIgnored="false"%>
@@ -107,7 +104,7 @@
 				<span>网络文化经营许可证：浙网文[2015]0295-065号</span>
 				<span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
 				<span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
-				<div class="copyRightYear">&copy; 2003-2016 TMALL.COM 版权所有</div>
+				<div class="copyRightYear">&copy; 2003-2018 TMALL.COM 版权所有</div>
 				<div>
 					<img src="img/site/copyRight1.jpg">
 					<img src="img/site/copyRight2.jpg">
