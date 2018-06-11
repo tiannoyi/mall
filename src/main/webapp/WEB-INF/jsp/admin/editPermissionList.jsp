@@ -107,12 +107,12 @@
 <div class="theme-popover">
      <div class="theme-poptit">
           <a href="javascript:;" title="关闭" class="close">×</a>
-          <h3>添加角色</h3>
+          <h3>添加权限</h3>
      </div>
      <div class="theme-popbod dform">
            <form class="theme-signin" name="loginform" action="" method="post">
 
-                   		<h4>请输入角色信息</h4>
+                   		<h4>请输入权限信息</h4>
                     <strong>资源名称:</strong><input class="ipt" type="text" id="perName" name="perName"  size="20" /><br/>
                    <strong>资源类型:</strong><input class="ipt" type="text" id="perType" name="perType"  size="20" /><br/>
                     <strong>访问url地址:</strong><input class="ipt" type="text" id="perUrl" name="perUrl"  size="20" /><br/>
@@ -130,6 +130,7 @@
 </div>
 </body>
 <script type="text/javascript">
+
 function insertPermission(){
 	var perName = $("#perName").val();
 	var perType = $("#perType").val();
@@ -147,7 +148,7 @@ function insertPermission(){
 				parentid:perParentid,
 				parentids:perParentids,
 				sortstring:perSortstring,
-				available:roleAvailable},
+				available:perAvailable},
 			 function(data){
 			    if(data.isSuccess == true){
 			    	alert(data.message);
