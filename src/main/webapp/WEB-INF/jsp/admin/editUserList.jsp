@@ -72,6 +72,7 @@
 		<button class="btn btn-success" type="button" onclick="updateUser(${status.index})">修改 </button>
 		<button class="btn btn-warning" type="button" onclick="deleteUser(${item.id})">删除</button>
 		<button class="btn btn-info" type="button" onclick="">详细信息</button>
+		<a class="btn btn-primary" type="button" href="${pageContext.request.contextPath }/UserRoler/selectUserRole?userId=${item.id}">查看角色</a>
 	</td>
 	
 </tr>
@@ -87,6 +88,15 @@
     </div>
 </body>
 <script type="text/javascript">
+function skipPage(index){
+	var id = $("#userid"+index).val();
+	$.post("${pageContext.request.contextPath }/UserRoler/skipPage",
+			{ userId:id},
+			 function(data){
+			  
+			  },"json");
+}
+
 function updateUser(index){
 	 var username = $("#username"+index).val();
 	var id = $("#userid"+index).val();
