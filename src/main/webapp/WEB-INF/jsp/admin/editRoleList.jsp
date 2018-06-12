@@ -81,6 +81,7 @@
 		</c:forEach> --%>
 		<button class="btn btn-success" type="button" onclick="updateRole(${status.index})">修改</button>
 		<button class="btn btn-warning" type="button" onclick="deleteRole(${item.id})">删除</button>
+		<a class="btn btn-primary" type="button" href="${pageContext.request.contextPath }/RolePermission/selectRolePermission?roleId=${item.id}">查看权限</a>
 	</td>
 	
 </tr>
