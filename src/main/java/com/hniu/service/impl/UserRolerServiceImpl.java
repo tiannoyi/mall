@@ -22,7 +22,7 @@ public class UserRolerServiceImpl implements UserRolerService{
 
 	@Override
 	public int addRoler(Integer userId, Integer roleId) {
-		List<Integer> id = null;
+		//List<Integer> id = null;
 		SysUserRole ur = new SysUserRole();
 		ur.setSysUserId(userId);
 		ur.setSysRoleId(roleId);
