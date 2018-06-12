@@ -29,4 +29,6 @@ public interface SysPermissionMapper {
     int updateByPrimaryKey(SysPermission record);
     //批量删除角色
     int deleteBatch(Integer[] id);
+    //查询单个角色权限
+    List<SysPermission> selectRolePermission(Integer roleId);
 }

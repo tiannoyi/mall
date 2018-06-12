@@ -33,24 +33,32 @@
 </head>
 <body> 
 <form name="userForm" action="${pageContext.request.contextPath }/items/queryItems.action" method="post">
-查询条件：
-<table width="100%" border=1>
-<tr>
-<td>
-资源名称：<input class="ipt" id="permissionName" name="permissionName" type="text">
-		<input class="btn btn-primary btn-large theme-login" type="button" value="查询" onclick="javascript:queryPermission();"/>
-</td>
-<td>
-	<a class="btn btn-primary btn-large theme-login" href="javascript:;">添加权限</a>
-</td>
-<td>
-<input class="btn btn-primary btn-large theme-login" type="button" value="批量删除" onclick="deletePermissions()">
-</td>
-</tr>
-</table>
-权限列表：
-<table width="100%" border=1>
-<tr>
+	<div class="panel panel-warning addDiv">
+	<div class="panel-heading">查询条件：资源名称</div>
+	<table class="editTable">
+		<tr>
+			<td>
+				<input class="form-control" id="permissionName" name="permissionName" type="text">
+			</td>
+			<td>
+				<button class="btn btn-primary" type="button" onclick="javascript:queryPermission();">查询</button>
+			</td>		
+		</tr>
+		<tr>
+			<td align="center">
+				<a class="btn btn-primary btn-large theme-login" href="javascript:;">添加权限</a>
+				<button class="btn btn-danger" type="button" onclick="deletePermissions()">批量删除</button>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="listDataTableDiv">
+<h1 class="label label-info" >权限列表：</h1>
+<br>
+<br>
+<table class="table table-striped table-bordered table-hover  table-condensed">
+<tr class="success">
 	<td>*</td>
 	<td>资源名称</td>
 	<td>资源类型</td>
@@ -66,13 +74,13 @@
 <tr>
  <input type="hidden" id="permissionid${status.index}" name="permissionid${status.index}" value="${item.id }"/>
 	<td><input type="checkbox" id="id" name="id" value="${item.id }"/></td>
-	<td><input id="name${status.index}" name="name" value="${item.name }"/></td>
-	<td><input id="type${status.index}" name="type" value="${item.type }"/></td>
-	<td><input id="url${status.index}" name="url" value="${item.url}"/></td>
-	<td><input id="percode${status.index}" name="percode" value="${item.percode }"/></td>
-	<td><input id="parentid${status.index}" name="parentid" value="${item.parentid }"/></td>
-	<td><input id="parentids${status.index}" name="parentids" value="${item.parentids }"/></td>
-	<td><input id="sortstring${status.index}" name="sortstring" value="${item.sortstring }"/></td>
+	<td><input class="form-control" id="name${status.index}" name="name" value="${item.name }"/></td>
+	<td><input class="form-control" id="type${status.index}" name="type" value="${item.type }"/></td>
+	<td><input class="form-control" id="url${status.index}" name="url" value="${item.url}"/></td>
+	<td><input class="form-control" id="percode${status.index}" name="percode" value="${item.percode }"/></td>
+	<td><input class="form-control" id="parentid${status.index}" name="parentid" value="${item.parentid }"/></td>
+	<td><input class="form-control" id="parentids${status.index}" name="parentids" value="${item.parentids }"/></td>
+	<td><input class="form-control" id="sortstring${status.index}" name="sortstring" value="${item.sortstring }"/></td>
 	<td>
 		<c:if test="${item.available == 0}">否</c:if>
 		<c:if test="${item.available == 1}">是</c:if>
@@ -81,8 +89,8 @@
 		<%-- <c:forEach items="${permission}" var="par">
 			<a href=javascript:addTab('${par.name }','${baseurl }/${par.url }')>${par.name }</a>
 		</c:forEach> --%>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="修改" onclick="updatePermission(${status.index})"/>
-		<input class="btn btn-primary btn-large theme-login" type="button" value="删除" onclick="deletePermission(${item.id})"/>
+		<button class="btn btn-success" type="button" onclick="updatePermission(${status.index})">修改</button>
+		<button class="btn btn-warning" type="button" onclick="deletePermission(${item.id})">删除</button>
 	</td>
 	
 </tr>
@@ -90,6 +98,7 @@
 
 
 </table>
+</div>
 </form>
     <div class="pageDiv">
         <%@include file="../include/admin/adminPage.jsp" %>
@@ -98,12 +107,12 @@
 <div class="theme-popover">
      <div class="theme-poptit">
           <a href="javascript:;" title="关闭" class="close">×</a>
-          <h3>添加角色</h3>
+          <h3>添加权限</h3>
      </div>
      <div class="theme-popbod dform">
            <form class="theme-signin" name="loginform" action="" method="post">
 
-                   		<h4>请输入角色信息</h4>
+                   		<h4>请输入权限信息</h4>
                     <strong>资源名称:</strong><input class="ipt" type="text" id="perName" name="perName"  size="20" /><br/>
                    <strong>资源类型:</strong><input class="ipt" type="text" id="perType" name="perType"  size="20" /><br/>
                     <strong>访问url地址:</strong><input class="ipt" type="text" id="perUrl" name="perUrl"  size="20" /><br/>
@@ -121,6 +130,7 @@
 </div>
 </body>
 <script type="text/javascript">
+
 function insertPermission(){
 	var perName = $("#perName").val();
 	var perType = $("#perType").val();
@@ -138,7 +148,7 @@ function insertPermission(){
 				parentid:perParentid,
 				parentids:perParentids,
 				sortstring:perSortstring,
-				available:roleAvailable},
+				available:perAvailable},
 			 function(data){
 			    if(data.isSuccess == true){
 			    	alert(data.message);

@@ -29,4 +29,6 @@ public interface SysRoleMapper {
     int updateByPrimaryKey(SysRole record);
     //批量删除角色
     int deleteBatch(Integer[] id);
+    //查询单个用户角色
+    List<SysRole> selectUserRole(Integer userId);
 }

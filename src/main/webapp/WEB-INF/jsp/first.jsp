@@ -71,7 +71,7 @@
 
 	//帮助
 	function showhelp(){
-	    window.open('${baseurl}help/help.html','帮助文档'); 
+	    window.open('${baseurl}help/helpPage','帮助文档'); 
 	}
 	
 	
@@ -90,7 +90,7 @@
 			欢迎当前用户：${activeUser.username}&nbsp;&nbsp;
 			<A href=javascript:showhelp()>使用帮助</A>
 			&nbsp;&nbsp;
-			<A title='修改密码' ref='modifypwd' href="#" rel='${baseurl}user/updatepwd' icon='icon-null' id="modifypwd" >修改密码</A>
+			<A title='修改密码' ref='modifypwd' href="#" rel='${baseurl}user/selectMyself?userid=${activeUser.userid}' icon='icon-null' id="modifypwd" >修改密码</A>
 			&nbsp;&nbsp;
 			<A id="loginOut" href=javascript:logout()>退出系统</A>
 

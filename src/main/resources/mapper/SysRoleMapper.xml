@@ -187,4 +187,10 @@
   	</foreach>
   	
   </delete>
+  <!-- 查询单个管理员角色 -->
+  <select id="selectUserRole" parameterType="java.lang.Integer" resultType="com.hniu.pojo.SysRole">
+  	SELECT *
+	FROM sys_role
+	WHERE id in(SELECT sys_user_role.sys_role_id FROM sys_user_role WHERE sys_user_role.sys_user_id = #{userId,jdbcType=INTEGER})
+  </select>
 </mapper>

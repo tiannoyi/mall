@@ -15,4 +15,6 @@ public interface SysUserService {
 	int deleteUser(Integer id);
 	//批量删除
 	int deleteBatch(Integer[] id);
+	//修改密码
+	int updatePassword(Integer id,String oldPassword,String newPassword,String secendPassword);
 }
