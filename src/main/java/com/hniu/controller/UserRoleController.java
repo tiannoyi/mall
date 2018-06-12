@@ -22,11 +22,15 @@ public class UserRoleController {
 	@Autowired
 	UserRolerService userRoleService;
 	
+	private static Integer id = null;
 	//查看此管理员角色
 	@RequestMapping("selectUserRole")
 	public String selectUserRole(Integer userId,Model model,Page page){
+		if(userId != null) {
+			id = userId;
+		}
 		PageHelper.offsetPage(page.getStart(),page.getCount());
-		List<SysRole> list = userRoleService.selectUserRole(userId);
+		List<SysRole> list = userRoleService.selectUserRole(id);
 		int total = (int) new PageInfo<>(list).getTotal();
 		page.setTotal(total);
 		model.addAttribute("userId",userId);
