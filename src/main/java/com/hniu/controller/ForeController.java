@@ -4,6 +4,8 @@ package com.hniu.controller;
 import com.github.pagehelper.PageHelper;
 import com.hniu.pojo.*;
 import com.hniu.service.*;
+import com.hniu.util.State;
+
 import comparator.*;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.http.HttpRequest;
@@ -42,8 +44,6 @@ public class ForeController {
 	OrderItemService orderItemService;
 	@Autowired
 	ReviewService reviewService;
-	
-	boolean isTrue = false;
 
 	@RequestMapping("forehome")
 	public String home(Model model) {
@@ -391,25 +391,32 @@ public class ForeController {
 
 	@RequestMapping("updatepassword")
 	@ResponseBody
-	public boolean updatepassword(HttpServletRequest request, String name, String oldpassword, String newpassword) {
-		
+	public State updatepassword(HttpServletRequest request, String name, String oldpassword, String newpassword) {
+		State state = new State();
 		User u = new User();
 		u.setName(name);
 		u.setPassword(newpassword);
 		if(u!=null) {
-			isTrue = userService.updateUserByName(u, oldpassword);
+			state.setIsSuccess(userService.updateUserByName(u, oldpassword));
 		}
-		if (isTrue==true) {
-			return true;
+		
+		if(state.getIsSuccess()==true) {
+			state.setMessage("修改密码成功");
+			return state;
+		}else {
+			state.setIsSuccess(false);
+			state.setMessage("修改密码失败");
+			return state;
 		}
-		return false;
 	}
-	
-	@RequestMapping("updatesuccess")
-	public String updatesuccess() {
-		return "updatesuccess";
-	}
-	
 	// 忘记密码模块结束
 
+	//物流信息
+	@RequestMapping("foreexpress")
+	public String foreexpress(Model model, int oid) {
+		Order o = orderService.get(oid);	
+		model.addAttribute("o", o);
+		return "fore/express";
+	}
+	//物流信息结束
 }

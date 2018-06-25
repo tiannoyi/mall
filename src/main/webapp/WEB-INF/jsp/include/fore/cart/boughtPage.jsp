@@ -88,6 +88,7 @@ $(function(){
 				<td width="100px">单价</td>
 				<td width="100px">数量</td>
 				<td width="120px">实付款</td>
+				<td width="100px">交易状态</td>
 				<td width="100px">交易操作</td>
 			</tr>
 		</table>
@@ -104,7 +105,7 @@ $(function(){
 					</span>
 					</td>
 					<td  colspan="2"><img width="13px" src="img/site/orderItemTmall.png">天猫商场</td>
-					<td colspan="1">
+					<td colspan="2">
 						<a class="wangwanglink" href="#nowhere">
 							<div class="orderItemWangWangGif"></div>
 						</a>
@@ -145,6 +146,9 @@ $(function(){
 							<td valign="top" rowspan="${fn:length(o.orderItems)}" width="120px" class="orderListItemProductRealPriceTD orderItemOrderInfoPartTD">
 								<div class="orderListItemProductRealPrice">￥<fmt:formatNumber  minFractionDigits="2"  maxFractionDigits="2" type="number" value="${o.total}"/></div>
 								<div class="orderListItemPriceWithTransport">(含运费：￥0.00)</div>
+							</td>
+							<td valign="top" rowspan="${fn:length(o.orderItems)}" width="100px" class="orderListItemProductRealPriceTD orderItemOrderInfoPartTD">
+								<a href="foreexpress?oid=${o.id}">查看物流</a>
 							</td>
 							<td valign="top" rowspan="${fn:length(o.orderItems)}" class="orderListItemButtonTD orderItemOrderInfoPartTD" width="100px">
 								<c:if test="${o.status=='waitConfirm' }">

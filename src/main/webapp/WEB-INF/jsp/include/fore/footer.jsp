@@ -9,7 +9,16 @@
 
 	<div id="footer_ensure" class="footer_ensure">
 		<a href="#nowhere">
-			<img src="img/site/ensure.png">
+			<img src="img/site/ensure1.png">
+		</a>
+		<a href="#nowhere">
+			<img src="img/site/ensure2.png">
+		</a>
+		<a href="#nowhere">
+			<img src="img/site/ensure3.png">
+		</a>
+		<a href="#nowhere">
+			<img src="img/site/ensure4.png">
 		</a>
 	</div>
 
@@ -25,9 +34,9 @@
 		</div>
 		<div class="descColumn">
 			<span class="descColumnTitle">天猫保障</span>
-			<a href="#nowhere" >发票保障</a>
-			<a href="#nowhere" >售后规则</a>
-			<a href="#nowhere" >缺货赔付</a>
+			<a href="${pageContext.request.contextPath}/helpGuarantee" >发票保障</a>
+			<a href="${pageContext.request.contextPath}/helpGuarantee" >售后规则</a>
+			<a href="${pageContext.request.contextPath}/helpGuarantee" >缺货赔付</a>
 		</div>
 		<div class="descColumn">
 			<span class="descColumnTitle">支付方式</span>

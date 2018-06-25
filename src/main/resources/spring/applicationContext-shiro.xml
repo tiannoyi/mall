@@ -44,6 +44,10 @@
 				<!-- 验证码课匿名访问 -->
 				/validatecode.jsp = anon
 				<!-- 1 -->
+				/forgetpassword = anon
+				/updatepassword = anon
+				/helpGuarantee = anon
+				/helpTreeList = anon
 				/loginPage = anon
 				/register = anon
 				/forelogout = anon
