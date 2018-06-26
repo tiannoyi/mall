@@ -8,16 +8,16 @@
 
 	<div id="footer_ensure" class="footer_ensure">
 		<a href="${pageContext.request.contextPath}/ensure1">
-			<img src="img/site/ensure1.png">
+			<img src="img/site/ensureA.png">
 		</a>
 		<a href="${pageContext.request.contextPath}/ensure2">
-			<img src="img/site/ensure2.png">
+			<img src="img/site/ensureB.png">
 		</a>
 		<a href="#nowhere">
-			<img src="img/site/ensure3.png">
+			<img src="img/site/ensureC.png">
 		</a>
 		<a href="#nowhere">
-			<img src="img/site/ensure4.png">
+			<img src="img/site/ensureD.png">
 		</a>
 	</div>
 
