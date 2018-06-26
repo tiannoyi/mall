@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--暂未知  -->
+<mapper namespace="com.hniu.mapper.YJMapper">
+   <resultMap type="com.hniu.pojo.AdminInfo" id="AdminInfoResult">
+    <id column="id"  property="id"/>
+    <result column="sex"  property="sex"/>
+    <result column="age"  property="age"/>
+    <result column="tel" property="tel"/>
+    <result column="email" property="email"/>
+    <result column="birthday" property="birthday"/>
+   <association column="aid" property="admin" javaType="com.hniu.pojo.SysUser" >
+	<id column="id" property="id" jdbcType="INTEGER" />
+    <result column="usercode" property="usercode" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="locked" property="locked" jdbcType="CHAR" />
+	</association>
+
+  </resultMap> 
+	<select id="GetAdminByAID" parameterType="Integer" resultMap="AdminInfoResult"><!--方法名 参数类型和返回值类型  -->
+		select * from admininfo,sys_user where aid =  #{id} AND aid = sys_user.id
+    </select><!--#相当于"" $相当于  -->
+  
+</mapper>
