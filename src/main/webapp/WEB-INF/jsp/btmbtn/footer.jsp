@@ -3,15 +3,14 @@
 		 pageEncoding="UTF-8" isELIgnored="false"%>
 
 
-<%@include file="modal.jsp" %>
 
 <div id="footer"  class="footer" style="display: block;">
 
 	<div id="footer_ensure" class="footer_ensure">
-		<a href="#nowhere">
+		<a href="${pageContext.request.contextPath}/ensure1">
 			<img src="img/site/ensure1.png">
 		</a>
-		<a href="#nowhere">
+		<a href="${pageContext.request.contextPath}/ensure2">
 			<img src="img/site/ensure2.png">
 		</a>
 		<a href="#nowhere">
@@ -122,5 +121,3 @@
 		</div>
 	</div>
 </div>
-</body>
-</html>
