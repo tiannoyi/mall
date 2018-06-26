@@ -34,9 +34,9 @@
 		</div>
 		<div class="descColumn">
 			<span class="descColumnTitle">天猫保障</span>
-			<a href="${pageContext.request.contextPath}/helpGuarantee" >发票保障</a>
-			<a href="${pageContext.request.contextPath}/helpGuarantee" >售后规则</a>
-			<a href="${pageContext.request.contextPath}/helpGuarantee" >缺货赔付</a>
+			<a href="#nowhere" >发票保障</a>
+			<a href="#nowhere" >售后规则</a>
+			<a href="#nowhere" >缺货赔付</a>
 		</div>
 		<div class="descColumn">
 			<span class="descColumnTitle">支付方式</span>
