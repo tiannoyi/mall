@@ -45,6 +45,7 @@
 				/validatecode.jsp = anon
 				<!-- 1 -->
 				/forgetpassword = anon
+				/foreexpress = anon
 				/updatepassword = anon
 				/helpGuarantee = anon
 				/helpTreeList = anon
